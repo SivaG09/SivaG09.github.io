@@ -22,8 +22,8 @@
   --body: 'DM Sans', system-ui, sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden;font-size:16px}
+html{scroll-behavior:smooth;font-size:20px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--accent)}
@@ -47,7 +47,7 @@ nav.on{background:rgba(8,11,14,.95);border-bottom:1px solid var(--border);backdr
 .badge{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:1rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2rem}
 .dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:p 1.6s ease-in-out infinite}
 @keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.8)}}
-.hero-name{font-family:var(--head);font-size:clamp(2.2rem,4.2vw,4.8rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:.4rem;white-space:nowrap}
+.hero-name{font-family:var(--head);font-size:clamp(2rem,4.2vw,3.8rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:.4rem;white-space:nowrap}
 .hero-role{font-family:var(--mono);font-size:1.15rem;color:var(--muted);margin:1.2rem 0 1.8rem;letter-spacing:.04em}
 .hero-desc{font-size:1.15rem;line-height:1.82;color:#7a9ab5;max-width:480px;margin-bottom:2.5rem}
 .hero-desc strong{color:var(--text);font-weight:500}
