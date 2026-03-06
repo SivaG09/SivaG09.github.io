@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sivasubramanian G — Embedded &amp; Robotics Engineer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg:      #080b0e;
+  --bg2:     #0d1117;
+  --surface: #111820;
+  --border:  #1c2a38;
+  --accent:  #00d4ff;
+  --accent2: #ff6b35;
+  --green:   #4dffb4;
+  --text:    #dde4eb;
+  --muted:   #5d7a94;
+  --mono: 'Share Tech Mono', 'Courier New', monospace;
+  --head: 'Syne', system-ui, sans-serif;
+  --body: 'DM Sans', system-ui, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 5rem;transition:all .3s}
+nav.on{background:rgba(8,11,14,.95);border-bottom:1px solid var(--border);backdrop-filter:blur(10px)}
+.logo{font-family:var(--mono);font-size:.9rem;color:var(--accent);text-decoration:none;letter-spacing:.1em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:.7rem;color:var(--muted);text-decoration:none;letter-spacing:.08em;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-btn{font-family:var(--mono);font-size:.7rem;color:var(--accent);border:1px solid var(--accent);padding:.45rem 1.1rem;text-decoration:none;letter-spacing:.08em;transition:all .2s}
+.nav-btn:hover{background:var(--accent);color:var(--bg)}
+
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;position:relative;overflow:hidden}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.035) 1px,transparent 1px);background-size:56px 56px;animation:gm 25s linear infinite}
+@keyframes gm{from{background-position:0 0}to{background-position:56px 56px}}
+.hglow{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(0,212,255,.07) 0%,transparent 70%);top:-80px;left:-60px;pointer-events:none}
+.hero-l{display:flex;flex-direction:column;justify-content:center;padding:9rem 3rem 4rem 5rem;position:relative;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.68rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2rem}
+.dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:p 1.6s ease-in-out infinite}
+@keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.8)}}
+.hero-name{font-family:var(--head);font-size:clamp(2.2rem,4vw,4.2rem);font-weight:800;line-height:1;letter-spacing:-.03em;margin-bottom:.4rem}
+.hero-role{font-family:var(--mono);font-size:.88rem;color:var(--muted);margin:1.2rem 0 1.8rem;letter-spacing:.04em}
+.hero-desc{font-size:.97rem;line-height:1.82;color:#7a9ab5;max-width:480px;margin-bottom:2.5rem}
+.hero-desc strong{color:var(--text);font-weight:500}
+.btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-f{font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;padding:.85rem 2rem;background:var(--accent);color:var(--bg);text-decoration:none;font-weight:700;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transition:background .2s,transform .2s}
+.btn-f:hover{background:#33ddff;transform:translateY(-2px)}
+.btn-o{font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;padding:.85rem 2rem;border:1px solid var(--border);color:var(--muted);text-decoration:none;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transition:all .2s}
+.btn-o:hover{border-color:var(--accent);color:var(--accent)}
+.hstats{display:flex;gap:3rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--border)}
+.sv{font-family:var(--head);font-size:2rem;font-weight:800;color:var(--accent);display:block;line-height:1}
+.sl{font-family:var(--mono);font-size:.6rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:.35rem}
+.hero-r{display:flex;align-items:center;justify-content:center;position:relative;z-index:2;padding:9rem 3rem 4rem}
+.circuit{width:360px;height:360px}
+.circuit svg{width:100%;height:100%}
+
+/* SECTION COMMONS */
+section{padding:6rem 5rem}
+.sh{display:flex;align-items:center;gap:1.2rem;margin-bottom:3.5rem}
+.sn{font-family:var(--mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em}
+.st{font-family:var(--head);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:800;letter-spacing:-.02em}
+.sl2{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent)}
+
+/* ABOUT */
+#about{background:var(--bg2)}
+.ag{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start}
+.at{font-size:.94rem;line-height:1.88;color:#7a9ab5;margin-bottom:1.3rem}
+.at strong{color:var(--text);font-weight:500}
+.slinks{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.8rem}
+.sl3{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.7rem;color:var(--accent);text-decoration:none;border:1px solid var(--border);padding:.45rem 1rem;letter-spacing:.06em;transition:all .2s}
+.sl3:hover{border-color:var(--accent);background:rgba(0,212,255,.05)}
+.term{background:#030608;border:1px solid var(--border);border-left:2px solid var(--accent);padding:1.4rem 1.6rem;font-family:var(--mono);font-size:.76rem;line-height:1.9;color:var(--muted);margin-top:1.8rem}
+.tp{color:var(--green)}.tc{color:var(--text)}.tv{color:var(--accent)}.tg{color:#3a5568}
+.sktable{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.skbox{background:var(--surface);padding:1.3rem 1.5rem;transition:background .2s}
+.skbox:hover{background:#141f2b}
+.skcat{font-family:var(--mono);font-size:.6rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.7rem}
+.sktags{display:flex;flex-wrap:wrap;gap:.35rem}
+.sk{font-family:var(--mono);font-size:.66rem;color:var(--muted);border:1px solid var(--border);padding:.2rem .55rem;transition:all .2s}
+.sk:hover{color:var(--text);border-color:var(--muted)}
+
+/* PROJECTS */
+#projects{background:var(--bg)}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.pc{background:var(--surface);padding:2rem;position:relative;overflow:hidden;transition:background .25s}
+.pc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.pc.org::after{background:var(--accent2)}
+.pc:hover{background:#121c27}
+.pc:hover::after{transform:scaleX(1)}
+.pc.w{grid-column:span 2}
+.pmeta{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem}
+.pid{font-family:var(--mono);font-size:.6rem;color:var(--muted);letter-spacing:.1em}
+.badge2{font-family:var(--mono);font-size:.56rem;padding:.18rem .55rem;border:1px solid;letter-spacing:.1em;text-transform:uppercase}
+.done{color:var(--accent);border-color:var(--accent)}
+.wip{color:var(--accent2);border-color:var(--accent2)}
+.live{color:var(--green);border-color:var(--green)}
+.pt{font-family:var(--head);font-size:1.12rem;font-weight:700;margin-bottom:.7rem;line-height:1.25}
+.pd{font-size:.83rem;color:var(--muted);line-height:1.7;margin-bottom:1.3rem}
+.ptags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.3rem}
+.ptag{font-family:var(--mono);font-size:.6rem;color:var(--accent);background:rgba(0,212,255,.07);padding:.2rem .55rem}
+.plink{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-decoration:none;letter-spacing:.05em;transition:color .2s;display:inline-flex;align-items:center;gap:.3rem}
+.plink:hover{color:var(--accent)}
+.plink::after{content:' →'}
+
+/* EDUCATION */
+#education{background:var(--bg2)}
+.edu{display:grid;grid-template-columns:180px 1fr;gap:0 3rem;border:1px solid var(--border);padding:2.5rem 3rem;max-width:820px;transition:border-color .2s}
+.edu:hover{border-color:var(--accent)}
+.ey{font-family:var(--mono);font-size:.76rem;color:var(--accent);letter-spacing:.1em;padding-top:.3rem;border-right:1px solid var(--border);padding-right:2rem}
+.edeg{font-family:var(--head);font-size:1.28rem;font-weight:700;margin-bottom:.4rem}
+.esc{font-family:var(--mono);font-size:.76rem;color:var(--accent);letter-spacing:.05em;margin-bottom:.8rem}
+.edt{font-size:.85rem;color:var(--muted);line-height:1.7}
+
+/* CERTS */
+#certifications{background:var(--bg)}
+.cg{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+.cc{background:var(--surface);padding:1.9rem 2.2rem;display:flex;align-items:flex-start;gap:1.2rem;transition:background .2s}
+.cc:hover{background:#121c27}
+.cico{width:40px;height:40px;flex-shrink:0;background:rgba(0,212,255,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.cpl{font-family:var(--mono);font-size:.6rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.35rem}
+.cn{font-family:var(--head);font-size:.93rem;font-weight:700;margin-bottom:.3rem;line-height:1.3}
+.cs{font-size:.79rem;color:var(--muted);line-height:1.5}
+
+/* STACK */
+#stack{background:var(--bg2)}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.scard{border:1px solid var(--border);padding:1.8rem;transition:border-color .2s}
+.scard:hover{border-color:var(--accent)}
+.schead{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.scico{font-size:1.1rem;width:34px;height:34px;background:rgba(0,212,255,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+.scname{font-family:var(--head);font-size:.93rem;font-weight:700}
+.srows{display:flex;flex-direction:column;gap:.75rem}
+.srow{display:flex;align-items:center;justify-content:space-between}
+.srn{font-family:var(--mono);font-size:.73rem;color:var(--muted)}
+.bw{width:90px;height:3px;background:var(--border);position:relative;overflow:hidden}
+.bf{position:absolute;left:0;top:0;bottom:0;background:var(--accent);width:0%;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
+
+/* CONTACT */
+#contact{background:var(--bg)}
+.contg{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.ch{font-family:var(--head);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.2rem}
+.ch span{color:var(--accent)}
+.cs2{font-size:.92rem;color:var(--muted);line-height:1.75;margin-bottom:2.5rem}
+.chans{display:flex;flex-direction:column;gap:.7rem}
+.chan{display:flex;align-items:center;gap:1rem;border:1px solid var(--border);padding:.9rem 1.2rem;text-decoration:none;transition:all .2s}
+.chan:hover{border-color:var(--accent);background:rgba(0,212,255,.03)}
+.chico{width:30px;height:30px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.68rem;color:var(--accent);flex-shrink:0}
+.chlbl{font-family:var(--mono);font-size:.68rem;color:var(--accent);letter-spacing:.08em}
+.chv{font-size:.8rem;color:var(--muted);margin-left:auto}
+.cform{background:var(--surface);border:1px solid var(--border);padding:2.2rem}
+.ftag{font-family:var(--mono);font-size:.66rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;padding-bottom:1rem;margin-bottom:1.5rem;border-bottom:1px solid var(--border);display:block}
+.fr{margin-bottom:1rem}
+label{font-family:var(--mono);font-size:.6rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.4rem}
+input,textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:.7rem .9rem;font-family:var(--body);font-size:.85rem;outline:none;transition:border-color .2s;resize:none}
+input:focus,textarea:focus{border-color:var(--accent)}
+input::placeholder,textarea::placeholder{color:var(--muted)}
+textarea{min-height:90px}
+.sbtn{width:100%;background:var(--accent);color:var(--bg);border:none;padding:.85rem;font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;font-weight:700;cursor:pointer;margin-top:.4rem;transition:background .2s}
+.sbtn:hover{background:#33ddff}
+
+/* FOOTER */
+footer{padding:1.6rem 5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.fl{font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.fl span{color:var(--accent)}
+.fr2{font-family:var(--mono);font-size:.6rem;color:var(--border);letter-spacing:.1em}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.v{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1050px){
+  nav{padding:1rem 2rem}
+  .nav-links{display:none}
+  section{padding:5rem 2rem}
+  #hero{grid-template-columns:1fr}
+  .hero-r{display:none}
+  .hero-l{padding:8rem 2rem 4rem}
+  .ag,.contg{grid-template-columns:1fr;gap:2.5rem}
+  .pg{grid-template-columns:1fr}
+  .pc.w{grid-column:span 1}
+  .sgrid{grid-template-columns:1fr}
+  .cg{grid-template-columns:1fr}
+  .edu{grid-template-columns:1fr;padding:2rem}
+  .ey{border-right:none;border-bottom:1px solid var(--border);padding-bottom:1rem;padding-right:0;margin-bottom:1rem}
+  footer{padding:1.4rem 2rem;flex-direction:column;gap:.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="logo">SG_09</a>
+  <ul class="nav-links">
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#projects">PROJECTS</a></li>
+    <li><a href="#education">EDUCATION</a></li>
+    <li><a href="#certifications">CERTIFICATIONS</a></li>
+    <li><a href="#stack">SKILLS</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+  </ul>
+  <a href="https://github.com/SivaG09/" target="_blank" class="nav-btn">GITHUB →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hgrid"></div>
+  <div class="hglow"></div>
+
+  <div class="hero-l">
+    <div class="badge"><span class="dot"></span>Available for opportunities</div>
+    <h1 class="hero-name">Sivasubramanian G.</h1>
+    <p class="hero-role">// Embedded Systems &amp; Robotics Engineer</p>
+    <p class="hero-desc">I build systems that <strong>bridge software and hardware</strong> — from microcontroller firmware to autonomous robots. Passionate about real-time systems, control theory, and machines that move.</p>
+    <div class="btns">
+      <a href="#projects" class="btn-f">VIEW PROJECTS</a>
+      <a href="#contact" class="btn-o">GET IN TOUCH</a>
+    </div>
+    <div class="hstats">
+      <div><span class="sv">5+</span><span class="sl">Projects Built</span></div>
+      <div><span class="sv">4</span><span class="sl">Years of Study</span></div>
+      <div><span class="sv">∞</span><span class="sl">Curiosity</span></div>
+    </div>
+  </div>
+
+  <div class="hero-r">
+    <div class="circuit">
+      <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="g1"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="g2"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <g opacity=".07">
+          <line x1="0" y1="60" x2="360" y2="60" stroke="#00d4ff" stroke-width=".5"/>
+          <line x1="0" y1="120" x2="360" y2="120" stroke="#00d4ff" stroke-width=".5"/>
+          <line x1="0" y1="180" x2="360" y2="180" stroke="#00d4ff" stroke-width=".5"/>
+          <line x1="0" y1="240" x2="360" y2="240" stroke="#00d4ff" stroke-width=".5"/>
+          <line x1="0" y1="300" x2="360" y2="300" stroke="#00d4ff" stroke-width=".5"/>
+          <line x1="60" y1="0" x2="60" y2="360" stroke="#00d4ff" stroke-width=".5"/>
+          <line x1="120" y1="0" x2="120" y2="360" stroke="#00d4ff" stroke-width=".5"/>
+          <line x1="180" y1="0" x2="180" y2="360" stroke="#00d4ff" stroke-width=".5"/>
+          <line x1="240" y1="0" x2="240" y2="360" stroke="#00d4ff" stroke-width=".5"/>
+          <line x1="300" y1="0" x2="300" y2="360" stroke="#00d4ff" stroke-width=".5"/>
+        </g>
+        <g filter="url(#g1)" opacity=".75">
+          <polyline points="40,180 90,180 90,150 150,150 150,180 210,180" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+          <polyline points="210,180 270,180 270,210 320,210" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+          <polyline points="40,230 90,230 90,270 190,270 190,230 320,230" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+          <polyline points="120,110 120,70 240,70 240,110" fill="none" stroke="#00d4ff" stroke-width="1"/>
+          <polyline points="190,310 190,345 270,345 270,310" fill="none" stroke="#ff6b35" stroke-width="1.5" opacity=".85"/>
+        </g>
+        <g filter="url(#g2)">
+          <rect x="150" y="148" width="60" height="64" rx="2" fill="#0d1117" stroke="#00d4ff" stroke-width="1.5"/>
+          <text x="180" y="172" font-family="monospace" font-size="7.5" fill="#00d4ff" text-anchor="middle">MCU</text>
+          <text x="180" y="184" font-family="monospace" font-size="5.5" fill="#3d6070" text-anchor="middle">8051 CORE</text>
+          <line x1="150" y1="158" x2="140" y2="158" stroke="#00d4ff" stroke-width=".8"/>
+          <line x1="150" y1="168" x2="140" y2="168" stroke="#00d4ff" stroke-width=".8"/>
+          <line x1="150" y1="178" x2="140" y2="178" stroke="#00d4ff" stroke-width=".8"/>
+          <line x1="150" y1="188" x2="140" y2="188" stroke="#00d4ff" stroke-width=".8"/>
+          <line x1="210" y1="158" x2="220" y2="158" stroke="#00d4ff" stroke-width=".8"/>
+          <line x1="210" y1="168" x2="220" y2="168" stroke="#00d4ff" stroke-width=".8"/>
+          <line x1="210" y1="178" x2="220" y2="178" stroke="#00d4ff" stroke-width=".8"/>
+          <line x1="210" y1="188" x2="220" y2="188" stroke="#00d4ff" stroke-width=".8"/>
+        </g>
+        <rect x="30" y="165" width="50" height="28" rx="1" fill="#0d1117" stroke="#4dffb4" stroke-width="1"/>
+        <text x="55" y="177" font-family="monospace" font-size="6.5" fill="#4dffb4" text-anchor="middle">SENSOR</text>
+        <text x="55" y="187" font-family="monospace" font-size="5.5" fill="#3d6070" text-anchor="middle">DHT22</text>
+        <rect x="270" y="196" width="52" height="24" rx="1" fill="#0d1117" stroke="#ff6b35" stroke-width="1"/>
+        <text x="296" y="211" font-family="monospace" font-size="6" fill="#ff6b35" text-anchor="middle">DISPLAY</text>
+        <ellipse cx="270" cy="328" rx="22" ry="14" fill="#0d1117" stroke="#ff6b35" stroke-width="1.4"/>
+        <text x="270" y="332" font-family="monospace" font-size="6" fill="#ff6b35" text-anchor="middle">MOTOR</text>
+        <rect x="108" y="54" width="18" height="32" rx="1" fill="#0d1117" stroke="#00d4ff" stroke-width="1" opacity=".7"/>
+        <text x="117" y="68" font-family="monospace" font-size="5.5" fill="#00d4ff" text-anchor="middle">VCC</text>
+        <text x="117" y="79" font-family="monospace" font-size="5.5" fill="#3d6070" text-anchor="middle">+5V</text>
+        <rect x="153" y="256" width="7" height="7" fill="none" stroke="#3d6070" stroke-width=".8"/>
+        <rect x="214" y="256" width="7" height="7" fill="none" stroke="#3d6070" stroke-width=".8"/>
+        <circle r="2.5" fill="#00d4ff">
+          <animateMotion dur="2.8s" repeatCount="indefinite" path="M40,180 L90,180 L90,150 L150,150 L150,180 L210,180"/>
+          <animate attributeName="opacity" values="1;.2;1" dur="2.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="2.5" fill="#4dffb4">
+          <animateMotion dur="3.5s" repeatCount="indefinite" path="M40,230 L90,230 L90,270 L190,270 L190,230 L320,230"/>
+          <animate attributeName="opacity" values=".2;1;.2" dur="3.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="2.5" fill="#ff6b35">
+          <animateMotion dur="2s" repeatCount="indefinite" path="M190,310 L190,345 L270,345 L270,310"/>
+          <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <text x="8" y="354" font-family="monospace" font-size="6" fill="#1c2a38">REV_2.1 // SCHEMATIC</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sh reveal"><span class="sn">01.</span><h2 class="st">About Me</h2><div class="sl2"></div></div>
+  <div class="ag">
+    <div class="reveal">
+      <p class="at">Hey! I'm Sivasubramanian — an <strong>Electronics &amp; Communication engineer</strong> with a deep passion for the world where software controls physical hardware. Whether it's a microcontroller running a sensor loop or a robot navigating on its own, I love the moment code becomes motion.</p>
+      <p class="at">My focus is on <strong>low-level firmware, embedded C, and real-time systems</strong>. I've worked hands-on with 8051, AVR, and ARM microcontrollers, and I'm actively building skills in ROS and PCB design.</p>
+      <p class="at">I believe good embedded engineering is about <strong>reliability under constraints</strong> — there's no room for waste when your resources are measured in kilobytes.</p>
+      <div class="slinks">
+        <a href="https://linkedin.com/in/sivag09" target="_blank" class="sl3">↗ LinkedIn</a>
+        <a href="https://github.com/SivaG09" target="_blank" class="sl3">↗ GitHub</a>
+      </div>
+      <div class="term">
+        <div><span class="tp">siva@dev</span>:~$ <span class="tc">whoami</span></div>
+        <div class="tg">&nbsp;&nbsp;→ Embedded Systems Engineer | Robotics Enthusiast</div>
+        <div><span class="tp">siva@dev</span>:~$ <span class="tc">cat interests.txt</span></div>
+        <div class="tg">&nbsp;&nbsp;→ <span class="tv">Microcontrollers</span>, <span class="tv">ROS</span>, <span class="tv">RTOS</span>, <span class="tv">PCB Design</span>, <span class="tv">Firmware</span></div>
+        <div><span class="tp">siva@dev</span>:~$ <span class="tc">echo $STATUS</span></div>
+        <div class="tg">&nbsp;&nbsp;→ <span class="tv">Open to opportunities ✓</span></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="sktable">
+        <div class="skbox"><div class="skcat">Microcontrollers</div><div class="sktags"><span class="sk">8051</span><span class="sk">AVR</span><span class="sk">Arduino</span><span class="sk">STM32</span><span class="sk">ESP32</span></div></div>
+        <div class="skbox"><div class="skcat">Languages</div><div class="sktags"><span class="sk">Embedded C</span><span class="sk">C++</span><span class="sk">Python</span><span class="sk">Assembly</span></div></div>
+        <div class="skbox"><div class="skcat">Robotics</div><div class="sktags"><span class="sk">ROS / ROS2</span><span class="sk">Motor Control</span><span class="sk">Kinematics</span><span class="sk">Sensors</span></div></div>
+        <div class="skbox"><div class="skcat">Protocols</div><div class="sktags"><span class="sk">I2C</span><span class="sk">SPI</span><span class="sk">UART</span><span class="sk">CAN</span><span class="sk">PWM</span></div></div>
+        <div class="skbox"><div class="skcat">Concepts</div><div class="sktags"><span class="sk">RTOS</span><span class="sk">PID Control</span><span class="sk">Interrupts</span><span class="sk">DMA</span></div></div>
+        <div class="skbox"><div class="skcat">Tools</div><div class="sktags"><span class="sk">Proteus</span><span class="sk">Oscilloscope</span><span class="sk">Logic Analyzer</span><span class="sk">Git</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sh reveal"><span class="sn">02.</span><h2 class="st">Projects</h2><div class="sl2"></div></div>
+  <div class="pg">
+    <div class="pc w reveal">
+      <div class="pmeta"><span class="pid">PROJECT_001</span><span class="badge2 done">COMPLETE</span></div>
+      <h3 class="pt">Password-Based Door Lock System</h3>
+      <p class="pd">A secure embedded access control system built on the 8051 microcontroller. Users authenticate via a keypad; credentials are validated against EEPROM — triggering a relay/servo to unlock on match. Features LCD feedback and wrong-attempt lockout.</p>
+      <div class="ptags"><span class="ptag">8051 MCU</span><span class="ptag">Embedded C</span><span class="ptag">Keypad Interface</span><span class="ptag">EEPROM</span><span class="ptag">LCD</span><span class="ptag">Proteus</span></div>
+      <a href="https://github.com/SivaG09/Embedded-System-Project" target="_blank" class="plink">View on GitHub</a>
+    </div>
+    <div class="pc org reveal">
+      <div class="pmeta"><span class="pid">PROJECT_002</span><span class="badge2 wip">IN PROGRESS</span></div>
+      <h3 class="pt">Line-Following Robot</h3>
+      <p class="pd">Autonomous robot using IR sensors and a PID loop for smooth, accurate line tracking.</p>
+      <div class="ptags"><span class="ptag">Arduino</span><span class="ptag">PID Control</span><span class="ptag">IR Sensors</span><span class="ptag">Motor Driver</span></div>
+      <a href="https://github.com/SivaG09" target="_blank" class="plink">GitHub Profile</a>
+    </div>
+    <div class="pc reveal">
+      <div class="pmeta"><span class="pid">PROJECT_003</span><span class="badge2 live">ACTIVE</span></div>
+      <h3 class="pt">Obstacle Avoidance Robot</h3>
+      <p class="pd">Mobile robot with ultrasonic sensors that detects and avoids obstacles in real time.</p>
+      <div class="ptags"><span class="ptag">ESP32</span><span class="ptag">HC-SR04</span><span class="ptag">FreeRTOS</span></div>
+      <a href="https://github.com/SivaG09" target="_blank" class="plink">GitHub Profile</a>
+    </div>
+    <div class="pc reveal">
+      <div class="pmeta"><span class="pid">PROJECT_004</span><span class="badge2 done">COMPLETE</span></div>
+      <h3 class="pt">IoT Environmental Monitor</h3>
+      <p class="pd">Temperature and humidity monitoring over Wi-Fi with a live MQTT dashboard.</p>
+      <div class="ptags"><span class="ptag">ESP8266</span><span class="ptag">MQTT</span><span class="ptag">DHT22</span></div>
+      <a href="https://github.com/SivaG09" target="_blank" class="plink">GitHub Profile</a>
+    </div>
+    <div class="pc org reveal">
+      <div class="pmeta"><span class="pid">PROJECT_005</span><span class="badge2 wip">IN PROGRESS</span></div>
+      <h3 class="pt">Robotic Arm Controller</h3>
+      <p class="pd">3-DOF arm with servo PWM control and a basic inverse kinematics solver.</p>
+      <div class="ptags"><span class="ptag">STM32</span><span class="ptag">Inverse Kinematics</span><span class="ptag">Servo PWM</span></div>
+      <a href="https://github.com/SivaG09" target="_blank" class="plink">GitHub Profile</a>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sh reveal"><span class="sn">03.</span><h2 class="st">Education</h2><div class="sl2"></div></div>
+  <div class="edu reveal">
+    <div class="ey">2019 — 2023</div>
+    <div>
+      <div class="edeg">B.E. — Electronics &amp; Communication Engineering</div>
+      <div class="esc">Puducherry Technological University, Puducherry</div>
+      <div class="edt">Core coursework in Embedded Systems, Digital Electronics, Control Systems, Signal Processing, and Microprocessors.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="sh reveal"><span class="sn">04.</span><h2 class="st">Certifications &amp; Courses</h2><div class="sl2"></div></div>
+  <div class="cg">
+    <div class="cc reveal"><div class="cico">⚙️</div><div><div class="cpl">Udemy</div><div class="cn">Embedded Systems Programming on ARM</div><div class="cs">Bare-metal programming for ARM Cortex-M processors</div></div></div>
+    <div class="cc reveal"><div class="cico">🤖</div><div><div class="cpl">The Construct</div><div class="cn">Introduction to ROS / ROS2</div><div class="cs">Robot Operating System with simulation environments</div></div></div>
+    <div class="cc reveal"><div class="cico">🔋</div><div><div class="cpl">Online</div><div class="cn">FreeRTOS — Real-Time Operating System</div><div class="cs">Task scheduling, queues and semaphores on embedded targets</div></div></div>
+    <div class="cc reveal"><div class="cico">🖥️</div><div><div class="cpl">Online</div><div class="cn">PCB Design with KiCad</div><div class="cs">Schematic capture and PCB layout for electronics projects</div></div></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="stack">
+  <div class="sh reveal"><span class="sn">05.</span><h2 class="st">Skills &amp; Stack</h2><div class="sl2"></div></div>
+  <div class="sgrid">
+    <div class="scard reveal">
+      <div class="schead"><div class="scico">⚙️</div><div class="scname">Hardware &amp; MCU</div></div>
+      <div class="srows">
+        <div class="srow"><span class="srn">8051 Microcontroller</span><div class="bw"><div class="bf" data-w="90"></div></div></div>
+        <div class="srow"><span class="srn">Arduino / AVR</span><div class="bw"><div class="bf" data-w="85"></div></div></div>
+        <div class="srow"><span class="srn">ESP32 / ESP8266</span><div class="bw"><div class="bf" data-w="75"></div></div></div>
+        <div class="srow"><span class="srn">STM32 (ARM Cortex)</span><div class="bw"><div class="bf" data-w="60"></div></div></div>
+        <div class="srow"><span class="srn">Raspberry Pi</span><div class="bw"><div class="bf" data-w="62"></div></div></div>
+      </div>
+    </div>
+    <div class="scard reveal">
+      <div class="schead"><div class="scico">🤖</div><div class="scname">Software &amp; Robotics</div></div>
+      <div class="srows">
+        <div class="srow"><span class="srn">Embedded C / C++</span><div class="bw"><div class="bf" data-w="88"></div></div></div>
+        <div class="srow"><span class="srn">Python</span><div class="bw"><div class="bf" data-w="72"></div></div></div>
+        <div class="srow"><span class="srn">ROS / ROS2</span><div class="bw"><div class="bf" data-w="55"></div></div></div>
+        <div class="srow"><span class="srn">FreeRTOS</span><div class="bw"><div class="bf" data-w="55"></div></div></div>
+      </div>
+    </div>
+    <div class="scard reveal">
+      <div class="schead"><div class="scico">🔌</div><div class="scname">Protocols &amp; Interfaces</div></div>
+      <div class="srows">
+        <div class="srow"><span class="srn">UART / USART</span><div class="bw"><div class="bf" data-w="90"></div></div></div>
+        <div class="srow"><span class="srn">I2C / SPI</span><div class="bw"><div class="bf" data-w="85"></div></div></div>
+        <div class="srow"><span class="srn">PWM / ADC / DAC</span><div class="bw"><div class="bf" data-w="88"></div></div></div>
+        <div class="srow"><span class="srn">CAN Bus</span><div class="bw"><div class="bf" data-w="55"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sh reveal"><span class="sn">06.</span><h2 class="st">Get In Touch</h2><div class="sl2"></div></div>
+  <div class="contg">
+    <div class="reveal">
+      <h3 class="ch">Let's build<br>something <span>real.</span></h3>
+      <p class="cs2">Looking to collaborate on an embedded or robotics project, or want to discuss a work opportunity? My inbox is open.</p>
+      <div class="chans">
+        <a href="https://linkedin.com/in/sivag09" target="_blank" class="chan">
+          <div class="chico">in</div><div><div class="chlbl">LINKEDIN</div></div>
+          <div class="chv">linkedin.com/in/sivag09</div>
+        </a>
+        <a href="https://github.com/SivaG09" target="_blank" class="chan">
+          <div class="chico">&lt;/&gt;</div><div><div class="chlbl">GITHUB</div></div>
+          <div class="chv">github.com/SivaG09</div>
+        </a>
+      </div>
+    </div>
+    <div class="cform reveal">
+      <span class="ftag">// SEND_MESSAGE</span>
+      <div class="fr"><label>Name</label><input type="text" placeholder="Your name"></div>
+      <div class="fr"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      <div class="fr"><label>Subject</label><input type="text" placeholder="Project / Opportunity / Hello"></div>
+      <div class="fr"><label>Message</label><textarea placeholder="Tell me about it..."></textarea></div>
+      <button class="sbtn" onclick="this.textContent='SENT ✓';this.style.background='#4dffb4'">SEND MESSAGE →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">© 2024 <span>Sivasubramanian G.</span> — Embedded &amp; Robotics Engineer</div>
+  <div class="fr2">DESIGNED &amp; BUILT WITH ♥</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('on', window.scrollY > 40);
+  });
+  const ro = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('v'); }), {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  const bo = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.querySelectorAll('.bf').forEach(b => b.style.width = b.dataset.w + '%'); }), {threshold:0.3});
+  document.querySelectorAll('.scard').forEach(el => bo.observe(el));
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = document.querySelector(a.getAttribute('href')); if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});} }));
+</script>
+</body>
+</html>
